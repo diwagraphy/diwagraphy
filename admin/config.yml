@@ -1,0 +1,78 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "stories"
+    label: "Photo Stories (Contact Sheet)"
+    files:
+      - name: "stories"
+        label: "All Stories"
+        file: "content/stories.json"
+        fields:
+          - label: "Stories"
+            name: "stories"
+            widget: "list"
+            summary: "{{fields.num}} — {{fields.title}} ({{fields.orientation}})"
+            fields:
+              - { label: "Frame Number", name: "num", widget: "string", hint: "e.g. 11A" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Photo", name: "image", widget: "image", required: false }
+              - label: "Orientation"
+                name: "orientation"
+                widget: "select"
+                options:
+                  - { label: "Portrait (tall)", value: "portrait" }
+                  - { label: "Landscape (wide)", value: "landscape" }
+                default: "portrait"
+                hint: "Choose whichever matches your photo's actual shape — Landscape avoids cropping wide shots into a tall frame."
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options: ["Temples", "Rituals", "Sadhus", "River & Boats", "Ghats & Architecture", "Markets"]
+                hint: "Used to group photos into collapsible sections on the Gallery page. Add new options here as your work grows."
+              - { label: "Lens", name: "lens", widget: "string", default: "35mm" }
+              - { label: "Aperture", name: "aperture", widget: "string", default: "f/2.0" }
+              - { label: "Shutter Speed", name: "shutter", widget: "string", default: "1/125" }
+              - { label: "ISO", name: "iso", widget: "string", default: "400" }
+              - { label: "Stamp (short location tag)", name: "stamp", widget: "string", hint: "e.g. VARANASI · GHAT" }
+              - { label: "The Story (back of the print)", name: "note", widget: "text" }
+              - { label: "Place", name: "place", widget: "string" }
+              - { label: "Date", name: "date", widget: "string" }
+
+  - name: "posts"
+    label: "Journal Posts"
+    files:
+      - name: "posts"
+        label: "All Posts"
+        file: "content/posts.json"
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "string" }
+              - { label: "Cover Photo", name: "cover", widget: "image" }
+              - { label: "Short Excerpt (shown on the card)", name: "excerpt", widget: "text" }
+              - label: "Story Body"
+                name: "body"
+                widget: "list"
+                summary: "{{fields.type}}"
+                types:
+                  - label: "Paragraph"
+                    name: "p"
+                    widget: object
+                    fields:
+                      - { label: "Type", name: "type", widget: "hidden", default: "p" }
+                      - { label: "Text", name: "text", widget: "text" }
+                  - label: "Photo"
+                    name: "img"
+                    widget: object
+                    fields:
+                      - { label: "Type", name: "type", widget: "hidden", default: "img" }
+                      - { label: "Image", name: "src", widget: "image" }

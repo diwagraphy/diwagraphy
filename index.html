@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diwagraphy — A Story Through the Lens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><span class="aperture"></span>Diwagraphy</div>
+  <div class="links">
+    <a href="index.html" class="current">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="journal.html">Journal</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="sprocket-row top">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">Diwagraphy — Roll 01, Frame 00</div>
+      <h1>A story,<br>through the lens.</h1>
+      <p>Photographs, and the small true stories that were happening just outside the frame when the shutter closed.</p>
+      <div class="roll-count mono">KODAK · 36 EXP · ISO 400 · SCROLL TO DEVELOP ↓</div>
+    </div>
+
+    <!-- 9:16 → now 16:9 video reel. Replace <source src> with your own ~5 sec silent clip. -->
+    <div class="reel-frame">
+      <div class="reel-sprockets">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <video autoplay muted loop playsinline poster="">
+        <source src="" type="video/mp4">
+      </video>
+      <div class="reel-placeholder" id="reel-placeholder">
+        Your 16:9 clip<br>goes here<br><span style="opacity:0.6;">(≈5 sec, no sound needed)</span>
+      </div>
+      <div class="reel-tag">ROLL 01 · CLIP</div>
+    </div>
+  </div>
+
+  <div class="sprocket-row bottom">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- PHOTO TEASER -->
+<section class="section" id="photo-teaser">
+  <div class="section-head">
+    <div>
+      <div class="tag">The Contact Sheet</div>
+      <h2>A few recent frames</h2>
+    </div>
+    <p>Click any frame to turn the print over and read what was happening.</p>
+  </div>
+  <div class="sheet" id="teaser-sheet-grid"></div>
+  <a href="gallery.html" class="see-more">See the full gallery →</a>
+</section>
+
+<!-- JOURNAL TEASER -->
+<section class="section" id="journal-teaser">
+  <div class="section-head">
+    <div>
+      <div class="tag">The Journal</div>
+      <h2>Latest stories</h2>
+    </div>
+    <p>Some photographs need more than a caption on the back of a print.</p>
+  </div>
+  <div class="journal-grid" id="teaser-journal-grid"></div>
+  <a href="journal.html" class="see-more">Read all stories →</a>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="about-grid">
+    <div>
+      <div class="quote">"I don't chase perfect light. I chase the moment <span>right before</span> someone stops noticing the camera."</div>
+      <p class="body-text">I shoot a mix of everything — quiet streets, long roads, and the faces of people who let me stay a little longer than a stranger should. Most of what matters in a photograph never shows up in the frame, so I write it on the back instead, the way my grandfather used to.</p>
+      <div class="roll-strip">
+        <div class="tone-1"></div><div class="tone-2"></div><div class="tone-3"></div><div class="tone-4"></div><div class="tone-5"></div><div class="tone-6"></div>
+      </div>
+    </div>
+    <div>
+      <div class="tag" style="color:var(--amber)">Currently shooting</div>
+      <p class="body-text" style="margin-top:14px;">A slow, ongoing project across coastal towns and holy cities — collecting the stories people tell about the places they call home, one roll at a time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <h2>Got a story<br>worth framing?</h2>
+  <div class="contact-line">
+    <span style="font-family:'Fraunces',serif; font-style:italic; font-size:0.85rem; letter-spacing:0.02em;">Diwagraphy — a story through the lens</span>
+    <span><a href="mailto:hello@diwagraphy.example">hello@diwagraphy.example</a> &nbsp;·&nbsp; <a href="#">@diwagraphy</a></span>
+  </div>
+  <div class="bottom">
+    <span>DIWAGRAPHY</span>
+    <span>PROTOTYPE / v0.2</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Hero reel: hide placeholder once a real video source is added later
+  const reelVideo = document.querySelector('.reel-frame video source');
+  const reelPlaceholder = document.getElementById('reel-placeholder');
+  if (reelVideo && reelVideo.getAttribute('src')) reelPlaceholder.style.display = 'none';
+
+  // Home only shows a small teaser — first 3 photos, first 2 journal posts
+  fetch('content/stories.json').then(r => r.json()).then(data => {
+    const grid = document.getElementById('teaser-sheet-grid');
+    (data.stories || []).slice(0, 3).forEach(f => renderFrame(f, grid));
+  });
+
+  fetch('content/posts.json').then(r => r.json()).then(data => {
+    const grid = document.getElementById('teaser-journal-grid');
+    (data.posts || []).slice(0, 2).forEach((p, i) => renderPostCard(p, i, grid, () => { window.location.href = 'journal.html'; }));
+  });
+</script>
+
+</body>
+</html>

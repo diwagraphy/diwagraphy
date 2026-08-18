@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "title": "A Night at Manikarnika",
+      "date": "January 2024",
+      "cover": "images/07-manikarnika-night.jpg",
+      "excerpt": "PLACEHOLDER — a short 1-2 line teaser that pulls someone into clicking the full story.",
+      "body": [
+        {"type": "p", "text": "PLACEHOLDER paragraph one — set the scene. Where were you standing, what time was it, what did the air feel like."},
+        {"type": "p", "text": "PLACEHOLDER paragraph two — the moment that made you lift the camera."},
+        {"type": "img", "src": "images/07-manikarnika-night.jpg"},
+        {"type": "p", "text": "PLACEHOLDER paragraph three — what you were thinking about on the walk back, or what stayed with you after."}
+      ]
+    },
+    {
+      "title": "Following the Sadhus of Varanasi",
+      "date": "January 2024",
+      "cover": "images/10-sadhu-group.webp",
+      "excerpt": "PLACEHOLDER — a short teaser about the people in this story and why they let you photograph them.",
+      "body": [
+        {"type": "p", "text": "PLACEHOLDER paragraph one — how you first crossed paths, and what the conversation (if any) was like."},
+        {"type": "img", "src": "images/03-sadhus-chillum.webp"},
+        {"type": "p", "text": "PLACEHOLDER paragraph two — a detail about one person in particular that stuck with you."},
+        {"type": "img", "src": "images/09-aghori-ritual.webp"},
+        {"type": "p", "text": "PLACEHOLDER paragraph three — how the encounter ended, or what you still wonder about."}
+      ]
+    },
+    {
+      "title": "Mornings on the Ganga",
+      "date": "December 2023",
+      "cover": "images/05-boatman.jpg",
+      "excerpt": "PLACEHOLDER — a short teaser about the river, the boats, and the people who work on it every morning.",
+      "body": [
+        {"type": "p", "text": "PLACEHOLDER paragraph one — what time you arrived, and what the ghats looked like before the crowds."},
+        {"type": "img", "src": "images/06-red-ghat.webp"},
+        {"type": "p", "text": "PLACEHOLDER paragraph two — a conversation, a gesture, or a moment on the water worth writing down."}
+      ]
+    }
+  ]
+}

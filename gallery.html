@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Diwagraphy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><span class="aperture"></span>Diwagraphy</div>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="gallery.html" class="current">Gallery</a>
+    <a href="journal.html">Journal</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="eyebrow">The Contact Sheet</div>
+  <h1>Every frame, in order.</h1>
+  <p>Click any photo to turn the print over — that's where the story was actually written.</p>
+</header>
+
+<section class="section">
+  <div class="gallery-search">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="gallery-search-input" placeholder="Search by title, place, or category...">
+    <span class="search-clear" id="gallery-search-clear">✕ clear</span>
+  </div>
+
+  <div class="no-results" id="gallery-no-results">No frames match that search.</div>
+
+  <div id="category-container"></div>
+</section>
+
+<footer id="contact">
+  <h2>Got a story<br>worth framing?</h2>
+  <div class="contact-line">
+    <span style="font-family:'Fraunces',serif; font-style:italic; font-size:0.85rem; letter-spacing:0.02em;">Diwagraphy — a story through the lens</span>
+    <span><a href="mailto:hello@diwagraphy.example">hello@diwagraphy.example</a> &nbsp;·&nbsp; <a href="#">@diwagraphy</a></span>
+  </div>
+  <div class="bottom">
+    <span>DIWAGRAPHY</span>
+    <span>PROTOTYPE / v0.2</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const categoryContainer = document.getElementById('category-container');
+  const searchInput = document.getElementById('gallery-search-input');
+  const searchClear = document.getElementById('gallery-search-clear');
+  const noResultsEl = document.getElementById('gallery-no-results');
+
+  fetch('content/stories.json').then(r => r.json()).then(data => {
+    renderCategorizedGallery(data.stories || [], categoryContainer);
+  });
+
+  searchInput.addEventListener('input', () => {
+    searchClear.style.display = searchInput.value ? 'inline' : 'none';
+    filterGallery(searchInput.value, categoryContainer, noResultsEl);
+  });
+
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchClear.style.display = 'none';
+    filterGallery('', categoryContainer, noResultsEl);
+  });
+</script>
+
+</body>
+</html>
