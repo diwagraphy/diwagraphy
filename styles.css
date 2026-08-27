@@ -1,6 +1,6 @@
 /* ============================================================
    DIWAGRAPHY — SHARED STYLES
-   Used by index.html (Home), gallery.html, journal.html
+   Used by index.html (Home), gallery.html, journal.html, about.html
    ============================================================ */
 
 :root{
@@ -46,7 +46,7 @@ nav{
   display:flex; justify-content: space-between; align-items:center;
   padding: 18px 6vw;
   font-family:'Space Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.84rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #fff;
@@ -63,6 +63,11 @@ nav .brand{
   font-size: 1.5rem;
   letter-spacing: 0.01em;
   text-transform: none;
+}
+nav .brand img{
+  height: 46px;
+  width: auto;
+  display: block;
 }
 nav .brand .aperture{
   width: 16px; height: 16px;
@@ -91,12 +96,13 @@ nav .links a.current{ color: var(--amber); }
     padding: 16px 5vw;
   }
   nav .brand{ font-size: 1.2rem; }
-  nav .links{ gap: 18px; font-size: 0.66rem; }
+  nav .brand img{ height: 34px; }
+  nav .links{ gap: 18px; font-size: 0.76rem; }
   .hero{ padding-top: 130px; }
   .page-hero{ padding-top: 160px; }
 }
 
-/* ---------- PAGE HERO (used on Gallery + Journal — simpler than Home's big hero) ---------- */
+/* ---------- PAGE HERO (used on Gallery + Journal + About — simpler than Home's big hero) ---------- */
 .page-hero{
   background: linear-gradient(180deg, #241C15 0%, #1a140f 60%, #120d09 100%);
   color: var(--parchment);
@@ -334,7 +340,7 @@ nav .links a.current{ color: var(--amber); }
 .reel-frame .reel-sprockets span{ width:6px; height:9px; background: rgba(0,0,0,0.4); border-radius:1px; }
 .reel-frame .reel-tag{ position:absolute; bottom: 12px; left: 12px; z-index:3; font-family:'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; text-transform:uppercase; color: rgba(241,231,214,0.8); background: rgba(0,0,0,0.35); padding: 4px 9px; border-radius: 20px; }
 
-/* ---------- ABOUT (Home page only) ---------- */
+/* ---------- ABOUT (Home page teaser section + dedicated About Us page) ---------- */
 .about{ background: var(--umber); color: var(--parchment); }
 .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items:center; }
 @media(max-width:800px){ .about-grid{ grid-template-columns:1fr; } }
@@ -345,11 +351,10 @@ nav .links a.current{ color: var(--amber); }
 .roll-strip div{ width: 34px; height: 46px; border-radius:2px; }
 
 /* ---------- FOOTER (shared) ---------- */
-footer{ background: var(--umber-soft); color: var(--parchment); padding: 90px 6vw 40px; }
+footer{ background: var(--umber-soft); color: var(--parchment); padding: 90px 6vw 60px; }
 footer h2{ font-family:'Fraunces', serif; font-style: italic; font-weight:500; font-size: clamp(2rem, 5vw, 3.6rem); margin: 0 0 28px; max-width: 14ch; }
 .contact-line{ display:flex; justify-content: space-between; align-items:center; flex-wrap: wrap; gap: 20px; border-top: 1px solid rgba(241,231,214,0.18); padding-top: 28px; font-family:'Space Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em; color: #C7B99E; }
 .contact-line a{ color: var(--amber); }
 .contact-line a:hover{ text-decoration: underline; }
-footer .bottom{ margin-top: 50px; font-family:'Space Mono', monospace; font-size: 0.65rem; color: #6E6248; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
 
 ::selection{ background: var(--rust); color: #fff; }
