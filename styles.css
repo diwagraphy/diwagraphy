@@ -76,6 +76,21 @@ nav .brand .aperture{
   position: relative;
   flex-shrink: 0;
 }
+nav .brand-text{
+  font-family: 'Fraunces', serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+nav .brand-text em{
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin-left: 4px;
+}
 nav .brand .aperture::after{
   content:"";
   position: absolute; inset: 4px;
@@ -97,6 +112,7 @@ nav .links a.current{ color: var(--amber); }
   }
   nav .brand{ font-size: 1.2rem; }
   nav .brand img{ height: 34px; }
+  nav .brand-text em{ display: none; }
   nav .links{ gap: 18px; font-size: 0.76rem; }
   .hero{ padding-top: 130px; }
   .page-hero{ padding-top: 160px; }
